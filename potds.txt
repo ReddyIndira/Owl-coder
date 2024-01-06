@@ -1,0 +1,60 @@
+int isprime(int k)
+    {
+        if(k==1) return 0;
+        for(int i=2;i<=sqrt(k);i++)
+        {
+            if(k%i==0)
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    int pf(int n)
+    {
+        int i=3,c=0;
+        int m=n;
+        int j;
+        while(n%2==0)
+        {
+            c+=1;
+            n=n/2;
+        }
+        while(i<=sqrt(m))
+        {
+            if(n%i==0)
+            {
+                c+=1;
+                n=n/i;
+                j=i;
+            }
+            else
+            {
+                j=i+1;
+            }
+            i=j;
+            
+        }
+        if(n>2)
+        {
+            c+=1;
+        }
+        return c;
+    }
+	int sumOfPowers(int a, int b){
+	    // Code here
+	    int c=0;
+	    for(int i=a;i<=b;i++)
+	    {
+	        if(isprime(i))
+	        {
+	            c+=1;
+	        }
+	        else
+	        {
+	            c+=pf(i);
+	        }
+	    }
+	    return c;
+	}
+};
