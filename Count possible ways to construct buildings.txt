@@ -1,0 +1,15 @@
+ // Code here
+	    long long int a=1;
+	    long long int b=2;
+	    long long int c;
+	    if(N==1)
+	    {
+	        return 4;
+	    }
+	    for(int i=2;i<=N;i++)
+	    {
+	        c=(a+b)%1000000007;
+	        a=b;
+	        b=c;
+	    }
+	    return (c*c)%1000000007;
