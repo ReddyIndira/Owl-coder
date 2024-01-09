@@ -1,0 +1,9 @@
+    	    size_t pos=txt.find(pat,0);
+            vector<int>v;
+            while(pos!=string::npos)
+            {
+                v.push_back(pos+1);
+                pos=txt.find(pat,pos+1);
+            }
+            return v;
+            //code here
