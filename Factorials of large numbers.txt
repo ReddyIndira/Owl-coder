@@ -1,0 +1,37 @@
+        // code here
+        if(N==1)
+        {
+            return {1};
+        }
+        if(N==2)
+        {
+            return {2};
+        }
+       vector<int>v(100000,0);
+       v[0]=1;
+       int c=0;
+       int k=1,d,j=0;
+       for(int i=2;i<=N;i++)
+       {
+           for(j=0;j<=k;j++)
+           {
+               int l=((v[j]*i)+c);
+               v[j]=l%10;
+               c=l/10;
+           }
+           while(c>=1)
+           {
+               d=c%10;
+               v[j]=d;
+               j=j+1;
+               k+=1;
+               c=c/10;
+           }
+       }
+       vector<int>v2;
+       for(int m=j-1;m>=0;m--)
+       {
+           v2.push_back(v[m]);
+       }
+       return v2;
+    }
