@@ -1,0 +1,75 @@
+// Online C++ compiler to run C++ program onli
+#include<bits/stdc++.h>
+using namespace std;
+bool isvalid(int i,int j,int n,vector<vector<int>>&grid)
+{
+    int x=i;
+    int y=j;
+    //up
+    while(x>=0)
+    {
+        if(grid[x][y]==1)
+        {
+            return false;
+        }
+        x--;
+    }
+    x=i;
+    y=j;
+    //up left;
+    while(x>=0 && y>=0)
+    {
+        if(grid[x][y]==1)
+        {
+            return false;
+        }
+        x--;
+        y--;
+    }
+    //up right
+    x=i;
+    y=j;
+    while(x>=0 && y<n)
+    {
+        if(grid[x][y]==1)
+        {
+            return false;
+        }
+        x--;
+        y++;
+    }
+    return true;
+}
+void queen(int row,int n,vector<vector<int>>&grid)
+{
+    if(row==n)
+    {
+        for(int k=0;k<n;k++)
+        {
+            for(int l=0;l<n;l++)
+            {
+                cout<<grid[k][l]<<" ";
+            }
+            cout<<endl;
+        }
+        cout<<endl;
+        return;
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(isvalid(row,i,n,grid))
+    {
+            grid[row][i]=1;
+            queen(row+1,n,grid);
+            grid[row][i]=0;
+        }
+       
+    }
+}
+int main()
+{
+    int n;
+    cin>>n;
+    vector<vector<int>>grid(n,vector<int>(n,0));
+    queen(0,n,grid);
+}v
