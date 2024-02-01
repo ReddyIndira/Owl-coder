@@ -1,0 +1,34 @@
+frog jump-1:
+
+#include<bits/stdc++.h>
+using namespace std;
+int dp[100000];
+int fun(int idx,int a[],int n)
+{
+    if(idx==n-1)
+    {
+        return 0;
+    }
+    if(dp[n]!=-1)
+    {
+        return dp[n];
+    }
+    int left=abs(a[idx]-a[idx+1])+fun(idx+1,a,n);
+    int right=INT_MAX;
+    if(idx+2<=n-1)
+    {
+        right=abs(a[idx]-a[idx+2])+fun(idx+2,a,n);
+    }
+    return dp[idx]=min(left,right);
+}
+int main(){
+    int n;
+    cin>>n;
+    memset(dp,-1,sizeof(dp));
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    cout<<fun(0,a,n);
+}
