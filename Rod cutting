@@ -1,0 +1,21 @@
+int dp[10002];
+    int fun(int *price,int n)
+    {
+        if(n==0)
+        {
+            return 0;
+        }
+        if(dp[n]!=-1) return dp[n];
+        int maxi=INT_MIN;
+        int ans;
+        for(int i=0;i<n;i++)
+        {
+            ans=price[i]+fun(price,n-(i+1));
+            maxi=max(maxi,ans);
+        }
+        return dp[n]=maxi;
+    }
+    int cutRod(int price[], int n) {
+        memset(dp,-1,sizeof(dp));
+        return fun(price,n);
+      }
