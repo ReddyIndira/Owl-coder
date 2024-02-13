@@ -1,0 +1,39 @@
+int m=matrix.size();
+        int n=matrix[0].size();
+        int left=0,right=n-1;
+        int top=0,bottom=m-1;
+        vector<int>v;
+        while(left<=right && top<=bottom)
+        {
+            for(int j=left;j<=right;j++)
+            {
+                v.push_back(matrix[top][j]);
+            }
+            top+=1;
+            for(int i=top;i<=bottom;i++)
+            {
+               // cout<<matrix[i][bottom]<<" ";
+                v.push_back(matrix[i][right]);
+            }
+            right--;
+            if(top<=bottom)
+            {
+                for(int j=right;j>=left;j--)
+                {   
+                    //cout<<matrix[j][bottom]<<" ";
+                    v.push_back(matrix[bottom][j]);
+                } 
+                 bottom--;  
+            }
+           
+            if(left<=right)
+            {
+                for(int j=bottom;j>=top;j--)
+                {
+                    v.push_back(matrix[j][left]);
+                }
+                 left+=1;
+            }
+           
+        }
+        return v;
